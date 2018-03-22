@@ -1,22 +1,31 @@
-<%= link_to "New article", new_article_path %>
-<h1> Listing articles </h1>
 
-<table>
-  <tr>
-    <th> Title </th>
-    <th> Text </th>
-  </tr>
+<body>
+  <%= render 'nav' %>
+  <div class="container">
+  <div class="jumbotron">
+    <h1>The Weekly Daily</h1>
+    <p>Browse all our new articles...</p>
+  </div>
+</div>
+
+
 
   <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %> </td>
-    <td><%= article.content %> </td>
-  </tr>
-  <tr>
-    <td><%= link_to 'View full Article', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-  </tr>
+  <div class="container">
+  <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><%= article.title %></div>
+  <div class="panel-body">
+    <p><%= article.content %></p>
+  </div>
 
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item"><%= link_to 'View full Article', article %></li>
+    <li class="list-group-item"><%= link_to 'Edit', edit_article_path(article) %></li>
+    <li class="list-group-item"><%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+  </ul>
+</div>
+</div>
   <% end %>
-</table>
